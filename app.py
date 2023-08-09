@@ -5,9 +5,9 @@ import datetime
 import re
 
 # Ganti dengan nilai yang sesuai dari akun Twilio Anda
-TWILIO_ACCOUNT_SID = 'your_account_sid'
-TWILIO_AUTH_TOKEN = 'your_auth_token'
-TWILIO_PHONE_NUMBER = 'your_twilio_phone_number'
+TWILIO_ACCOUNT_SID = 'AC535dde1df278b29f715c7b67fd44aef3'
+TWILIO_AUTH_TOKEN = 'ff9d6418052c1f46294fec316b8f2a9f'
+TWILIO_PHONE_NUMBER = '+6283166565603'
 
 app = Flask(__name__)
 client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
