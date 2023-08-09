@@ -6,8 +6,8 @@ import re
 
 # Ganti dengan nilai yang sesuai dari akun Twilio Anda
 TWILIO_ACCOUNT_SID = 'AC535dde1df278b29f715c7b67fd44aef3'
-TWILIO_AUTH_TOKEN = 'ff9d6418052c1f46294fec316b8f2a9f'
-TWILIO_PHONE_NUMBER = '+6283166565603'
+TWILIO_AUTH_TOKEN = '07fdde6a6cf36ad76137ab9d8b279cb9'
+TWILIO_PHONE_NUMBER = '083166565603'
 
 app = Flask(__name__)
 client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
@@ -23,11 +23,18 @@ def whatsapp_bot():
 
     name = detect_name(incoming_message)
 
-    welcome_message = f"Halo {name}! Selamat datang di WhatsApp Bot. Saat ini jam {formatted_time} dan tanggal {formatted_date}. Silakan pilih salah satu opsi:"
-    menu = response.message(welcome_message)
-    menu.append(MessagingResponse().message("1. Opsi pertama"))
-    menu.append(MessagingResponse().message("2. Opsi kedua"))
-    menu.append(MessagingResponse().message("3. Opsi ketiga"))
+    if 'hai' in incoming_message or 'halo' in incoming_message:
+        response.message(f"Halo {name}! Ada yang bisa kami bantu hari ini?")
+
+    elif 'p' in incoming_message:
+        response.message(f"Terima kasih atas pesan 'p', {name}!")
+
+    else:
+        welcome_message = f"Halo {name}! Selamat datang di WhatsApp Bot. Saat ini jam {formatted_time} dan tanggal {formatted_date}. Silakan pilih salah satu opsi:"
+        menu = response.message(welcome_message)
+        menu.append(MessagingResponse().message("1. Opsi pertama"))
+        menu.append(MessagingResponse().message("2. Opsi kedua"))
+        menu.append(MessagingResponse().message("3. Opsi ketiga"))
 
     return str(response)
 
